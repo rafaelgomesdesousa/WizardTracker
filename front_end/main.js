@@ -209,6 +209,8 @@ tempo_pausa.addEventListener("focus", (event) => {
 
 btn_login.addEventListener("click", displayTelaPrincipal);
 
+sign_in.addEventListener("click", displayTelaPrincipal);
+
 playtimer.addEventListener("click",play_pomodoro_Timer);
 
 pausetimer.addEventListener("click", pause_pomodoro_Timer)
