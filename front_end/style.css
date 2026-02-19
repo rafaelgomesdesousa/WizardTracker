@@ -1,0 +1,509 @@
+.body{
+    background-color: #181310;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.centralizador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login{
+    width: 35vw;
+    height: 60vh;
+    background-color: #3b2c25;
+
+    border: 2px solid #785130;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+#livrinho{
+    color: #795131;
+    font-size: 128px;
+    padding-bottom: 0px;
+}
+
+.introd{
+    color: #795131;
+    font-size: 20px;
+    padding: 0px;
+}
+
+.entrada{
+    background-color: #785130;
+    width: 20vw;
+    height: 4vh;
+    color: #cda585;
+    padding-left: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-display: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    border: 2px solid #785130;
+    border-radius: 10px;
+}
+
+.entrada::placeholder{
+    color: #87684eaa;
+
+}
+
+.entrada:focus{
+    outline: none;
+    border: 1px solid #c7a080;
+}
+
+#senha{
+    margin-bottom: 30px;
+}
+
+.botoes_login{
+    gap: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.entrada_btn{
+    background-color: #785130;
+    font-display: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    border-style: none;
+    border-radius: 10px;
+
+    width: 10vw;
+    height: 5vh;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #cda585;
+    gap: 5px;
+}
+
+
+.entrada_btn:hover{
+    background-color: #a97952;
+    color: #564035;
+}
+
+/* ELEMENTOS DA TELA PRINCIPAL */
+
+.tela_principal{
+    display: none;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.infos{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #564035;
+    background-color: #3B2C25;
+
+    width: 22vw;
+    height:100vh;
+}
+
+.perfil{
+    background-color: #9e7f66;
+    border: 2px solid #87684e;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#feiticeiro{
+    color: #785130;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+.icon_mago{
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+#lapis_editar{
+    color: #785130;
+    padding: 10px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: #c7a992;
+    transition: background-color 0.3s;
+}
+
+#lapis_editar:hover{
+    color:#c7a992;
+    background-color: #785130;
+    cursor: pointer;
+}
+
+.container_timer{
+    background-color: #9e7f66;
+    border: 2px solid #87684e;
+
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: auto;           
+    min-height: 180px;      
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botoes_timer{
+    display: flex;
+    gap:30px;
+    margin-bottom: 40px;
+}
+
+.timer{
+    font-size: 64px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #181310;
+}
+
+#play_timer{
+    cursor: pointer;
+    font-size:40px;
+    color: #181310;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+#play_timer:hover { 
+    background-color: #513e35;
+    color: #b38d7b; 
+}
+
+#pause_timer{
+    cursor: pointer;
+    font-size: 40px;
+    color: #181310;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+
+#pause_timer:hover { 
+    background-color: #513e35;
+    color: #b38d7b; 
+}
+
+.container_break{
+    background-color: #18131026;
+    height:auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0px;
+    border: 2px solid #181310;
+    border-radius: 10px;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+.breaktimer{
+    font-size: 32px;
+    padding: 0;
+    margin: 10px;
+}
+
+.break{
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #181310;
+    padding: 0;
+    margin: 0;
+}
+
+.selecao_tempo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tempo_escolhido{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #9E7F67;
+    color: #181310;
+    border: 1px solid #181310;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Times New Roman', serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+#tempo_escolhido::placeholder{
+    color: #362a2095;
+}
+
+.selecao_tempo_pausa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tempo_escolhido_pausa{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #9E7F67;
+    color: #181310;
+    border: 1px solid #181310;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Times New Roman', serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+#tempo_escolhido_pausa::placeholder{
+    color: #362a2095;
+}
+
+
+.core{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.empty_tasks{
+    display: none;      /*MUDAR DEPOIS PELO AMOR DE DEUS VOLTA*/
+    flex-direction: column;
+}
+
+#empty_tasks{
+    color: #9e7f67a7;
+    font-size: 80px;
+    margin-bottom: 5px;
+    padding-left: 27%;
+}
+
+.empty_tasks_text{
+    color: #9e7f66a1;
+    font-size: 20px;
+}
+
+.task_container{
+
+    width: 90%;
+    height: 75%;
+    display: flex;
+    justify-content:space-around;
+    align-items: stretch;
+    flex-direction: row;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pendentes{
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 28%;
+    height: auto;
+    background-color: #836d6280;
+    display: flex;
+    flex-direction: column; /* As tarefas vão empilhar de cima para baixo */
+    padding: 10px;
+}
+
+.andamento{
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 28%;
+    height: auto;
+    background-color: #836d6280;
+    display: flex;
+    flex-direction: column; /* As tarefas vão empilhar de cima para baixo */
+    padding: 10px;
+}
+
+.concluidas{
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 28%;
+    height: auto;
+    background-color: #836d6280;
+    display: flex;
+    flex-direction: column; /* As tarefas vão empilhar de cima para baixo */
+    padding: 10px;
+}
+
+.titulo_coluna{
+    font-family: 'Times New Roman', Times, serif;
+    color: #cda585;
+    text-align: center;
+    font-size: 24px;
+
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
+
+.lista_tarefas{
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-bottom: 15px;
+}
+
+.adicionar_tarefa{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: auto;
+}
+
+#nova_tarefa_input{
+    flex-grow: 1;
+    background-color:#3b2c25;
+    color: #cda585;
+    border-style: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+#nova_tarefa_input::placeholder { color: #87684eaa; }
+#nova_tarefa_input:focus { outline: none; border: 1px solid #c7a080; }
+
+#btn_add_tarefa{
+    color: #cda585;
+    background-color: #785130;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn_add_tarefa:hover{
+    background-color: #cda585;
+    color: #785130;
+}
+
+.tarefa_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #181310;
+    font-family: 'Times New Roman', serif;
+    font-size: 20px;
+    background-color: #c7a992;
+    padding: 0;
+    
+    border-radius: 5px;
+}
+
+.tarefa_item input[type="checkbox"] {
+    display: none;
+}
+
+.tarefa_item label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    padding: 5px; 
+    cursor: pointer; 
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    color: #181310;
+    transition: background-color 0.3s;
+}
+
+.tarefa_item label::after {
+    content: '';
+    width: 22px;
+    height: 22px;
+    border: 2px solid #785130; 
+    border-radius: 6px; 
+
+    margin-left: 15px; 
+    transition: all 0.2s ease-in-out; 
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: transparent; 
+}
+
+.tarefa_item input[type="checkbox"]:checked + label::after {
+    background-color: #785130; 
+    border-color: #564035;
+    content: '✓'; 
+    color: #cda585; 
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+.tarefa_item input[type="checkbox"]:checked + label {
+    background-color: #bfa08a; 
+    opacity: 0.8;
+}
+
+.tarefa_item.finalizada label::after {
+    display: none; 
+}
+
+.tarefa_item.finalizada label {
+    cursor: default; 
+    background-color: #4a3b32;
+    text-decoration: line-through; 
+}
