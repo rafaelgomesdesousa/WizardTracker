@@ -2,8 +2,8 @@
 const container_login = document.getElementById("tela_login");
 const centralizador = document.querySelector(".centralizador");
 const container_tela_principal = document.getElementById("tela_principal");
-let nome_usuario = document.getElementById("nome");
-let senha_usuario = document.getElementById("senha");
+let nome_usuario = document.getElementById("nome"); //NOMEUSUARIO
+let senha_usuario = document.getElementById("senha");   //SENHAUSUARIO
 
 const btn_login = document.getElementById("login");
 const sign_in = document.getElementById("sign-in");
@@ -36,7 +36,9 @@ const lista_to_do=document.getElementById("lista_a_fazer");
 const lista_em_andamento = document.getElementById("lista_em_andamento");
 const lista_concluidas = document.getElementById("lista_concluidas");
 
+let tempo_total_estudo=0
 
+let feiticeiro_id_logado = null
 
 add_task.addEventListener("click", ()=>{
     const texto_tarefa=input_task.value.trim();
@@ -57,7 +59,7 @@ add_task.addEventListener("click", ()=>{
 
         checkbox.addEventListener("change", function(){
             if(this.checked){
-                setTimeout(()=>{
+                setTimeout(async()=>{
                     if (div_tarefa.parentElement === lista_a_fazer) {
 
                         lista_em_andamento.prepend(div_tarefa);
@@ -69,6 +71,9 @@ add_task.addEventListener("click", ()=>{
                         this.checked = false;
                         this.disabled = true; 
                         div_tarefa.classList.add("finalizada"); 
+
+                        let minutos_estudados=Math.floor(tempo_total_estudo/60);
+                        await salvarTarefa(texto_tarefa, minutos_estudados);
                     }
                 }, 400)
             }
@@ -78,24 +83,88 @@ add_task.addEventListener("click", ()=>{
         div_tarefa.appendChild(label);
 
         lista_a_fazer.appendChild(div_tarefa);
-        nova_tarefa_input.value = "";
+        input_task.value = "";
     }
 })
 
 
-function displayTelaPrincipal(){
+async function fazerLogin(){
     nome=nome_usuario.value;
     senha=senha_usuario.value;
 
     if(nome==="" || senha===""){
         alert("Feiticeiro deve inserir seu Nome e sua Senha para acessar seus arquivos!");
-    }else{
-        centralizador.style.display="none";
-        container_tela_principal.style.display="flex";
+        return;
+    }
+    const resposta=await fetch('http://127.0.0.1:8000/login', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json' },
+        body: JSON.stringify({nome:nome, senha:senha})
+    });
+    const dados = await resposta.json();
 
-        feiticeiro.innerText = nome;
+    if(dados.status==='sucesso'){
+        alert(dados.msg);
+        displayTelaPrincipal()
+        feiticeiro_id_logado=dados.id_usuario;
+    }else{
+        alert("Erro no Login: "+dados.msg)
+    }
+}
+
+
+
+async function fazerSignUp(){
+    nome=nome_usuario.value;
+    senha=senha_usuario.value;
+
+    if(nome==="" || senha===""){
+        alert("Feiticeiro deve inserir seu Nome e sua Senha para acessar seus arquivos!");
+        return;
     }
 
+    const resposta=await fetch('http://127.0.0.1:8000/usuarios', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json' },
+        body: JSON.stringify({nome:nome, senha:senha})
+    });
+    const dados=await resposta.json();
+
+    if(dados.status==="Sucesso"){
+        alert("Cadastro realizado! Agora faça o login.");
+    }else{
+        alert("Erro no cadastro: "+ dados.mensagem);
+    }
+}
+
+async function salvarTarefa(texto_tarefa, minutos_estudados){
+    if(!feiticeiro_id_logado){
+        console.error("Erro: Tentativa de salvar tarefa sem usuário logado.");
+        return;
+    }
+    try{
+        const resposta = await fetch('http://127.0.0.1:8000/tarefas', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({
+                usuario_id:feiticeiro_id_logado,
+                descricao:texto_tarefa,
+                tempo_est_min:minutos_estudados
+            })
+        });
+        const dados = await resposta.json();
+        console.log("Resposta do grimório:", dados.mensagem);
+    } catch(erro){
+        console.log("Erro na comunicação com o grimório:", erro);
+    }
+}
+
+
+
+function displayTelaPrincipal(){
+    centralizador.style.display = "none";
+    container_tela_principal.style.display = "flex";
+    feiticeiro.innerText = nome;
 }
 
 let pomodoro_binario=0;
@@ -116,6 +185,8 @@ function play_pomodoro_Timer(){
         cronometro=setInterval(()=>{
             if(segundosCorridos>0){
             segundosCorridos--;
+            console.log(tempo_total_estudo);
+            tempo_total_estudo++;
             display_timer.innerHTML=formatarTempo(segundosCorridos);
             }else{
                 clearInterval(cronometro);
@@ -207,13 +278,15 @@ tempo_pausa.addEventListener("focus", (event) => {
     event.target.value = "";
 });
 
-btn_login.addEventListener("click", displayTelaPrincipal);
+btn_login.addEventListener("click", fazerLogin);
 
-sign_in.addEventListener("click", displayTelaPrincipal);
+sign_in.addEventListener("click", fazerSignUp);
 
 playtimer.addEventListener("click",play_pomodoro_Timer);
 
 pausetimer.addEventListener("click", pause_pomodoro_Timer)
+
+
 
 
 
