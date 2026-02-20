@@ -1,2 +1,2 @@
 # WizardTracker
-Pomodoro + ToDo List w
+Pomodoro + ToDo List + CRUD
