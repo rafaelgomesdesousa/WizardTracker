@@ -1,4 +1,6 @@
 // Elementos da tela de login
+
+
 const container_login = document.getElementById("tela_login");
 const centralizador = document.querySelector(".centralizador");
 const container_tela_principal = document.getElementById("tela_principal");
@@ -40,6 +42,8 @@ let tempo_total_estudo=0
 
 let feiticeiro_id_logado = null
 
+
+//  Funcao para manipular as checkboxes
 add_task.addEventListener("click", ()=>{
     const texto_tarefa=input_task.value.trim();
 
@@ -86,6 +90,7 @@ add_task.addEventListener("click", ()=>{
         input_task.value = "";
     }
 })
+
 
 
 async function fazerLogin(){
